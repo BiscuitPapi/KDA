@@ -9,10 +9,6 @@ app.use("/", (req, res) => {
   res.json({ users: ["userOne", "userTwo"] });
 });
 
-app.get("/api", (req, res) => {
-  res.json({ users: ["userOne", "userTwo"] });
-});
-
 app.get("/api/sorting", async (req, res) => {
   try {
     const fileContent = req.query;
