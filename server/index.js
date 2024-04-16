@@ -7,7 +7,11 @@ app.use(cors());
 
 app.get("/api/sorting", async (req, res) => {
   try {
-    const fileContent = req.query;
+    const { fileContent } = req.body;
+
+    if (!fileContent) {
+      return res.status(400).send('File content is missing');
+    }
     var rawData = JSON.parse(fileContent.fileContent);
 
     let proceedData = rawData.toString().split("\n");
