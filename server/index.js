@@ -10,7 +10,7 @@ app.use("/", (req, res) => {
   const { fileContent } = req.body;
 
   if (!fileContent) {
-    return res.status(400).send("File content is missing");
+    console.log("File content is missing");
   }
 });
 
