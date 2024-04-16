@@ -5,13 +5,18 @@ const app = express();
 // Enable CORS for all routes
 app.use(cors());
 
+app.use("/", (req, res) => {
+  res.json({ users: ["userOne", "userTwo"] });
+  const { fileContent } = req.body;
+
+  if (!fileContent) {
+    return res.status(400).send("File content is missing");
+  }
+});
+
 app.get("/api/sorting", async (req, res) => {
   try {
-    const { fileContent } = req.body;
-
-    if (!fileContent) {
-      return res.status(400).send('File content is missing');
-    }
+    const fileContent = req.query;
     var rawData = JSON.parse(fileContent.fileContent);
 
     let proceedData = rawData.toString().split("\n");
