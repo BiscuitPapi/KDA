@@ -5,10 +5,6 @@ const app = express();
 // Enable CORS for all routes
 app.use(cors());
 
-app.use("/", (req, res) => {
-  res.json({ users: ["userOne", "userTwo"] });
-});
-
 app.get("/api/sorting", async (req, res) => {
   try {
     const fileContent = req.query;
